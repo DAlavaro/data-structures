@@ -12,9 +12,6 @@ if __name__ == '__main__':
 
     # Печатаем данные
     print(ll)
-    a = ""
-    for i in str(ll):
-        a += i
-    print(a)
-    assert a == "{'id': 0} -> {'id': 1} -> {'id': 2} -> {'id': 3} -> None"
+
+    assert str(ll) == "{'id': 0} -> {'id': 1} -> {'id': 2} -> {'id': 3} -> None"
 
