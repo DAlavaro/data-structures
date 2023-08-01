@@ -45,3 +45,28 @@ class LinkedListTestCase(unittest.TestCase):
 
         # Печатаем данные
         self.assertEqual(str(ll), a)
+
+    def setUp(self):
+        # Создаем связанный список и добавляем несколько узлов для каждого теста
+        self.ll = LinkedList()
+        self.ll.insert_beginning({'id': 1, 'username': 'lazzy508509'})
+        self.ll.insert_at_end({'id': 2, 'username': 'mik.roz'})
+        self.ll.insert_beginning({'id': 0, 'username': 'serebro'})
+
+    def test_to_list(self):
+        # Тестирование метода to_list()
+        data_list = self.ll.to_list()
+        self.assertEqual(data_list,
+                         [{'id': 0, 'username': 'serebro'}, {'id': 1, 'username': 'lazzy508509'}, {'id': 2, 'username': 'mik.roz'}])
+
+    def test_get_data_by_id_existing(self):
+        # Тестирование метода get_data_by_id() с существующим id
+        kid = 2
+        data_by_id = self.ll.get_data_by_id(kid)
+        self.assertEqual(data_by_id, {'id': 2, 'username': 'mik.roz'})
+
+    def test_get_data_by_id_non_existing(self):
+        # Тестирование метода get_data_by_id() с несуществующим id
+        target_id = 4
+        data_by_id = self.ll.get_data_by_id(target_id)
+        self.assertIsNone(data_by_id)
